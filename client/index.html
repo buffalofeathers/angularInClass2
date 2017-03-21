@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app='ice2'>
+    <head>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js'></script> 
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.js'></script>
+        <script src="app.js"></script>
+        <title></title>
+    </head>
+    <body ng-controller='HomeController'>
+        <h1>{{ welcome }}</h1>
+        <div ng-repeat="chirp in chirps">
+            <h1>{{ chirp.message }}</h1>
+            <h3>{{ chirp.name }}</h3>
+            <h3>{{ chirp.timestamp | date }}</h3>
+            <p>{{ chirp.id }}</p>
+            <button ng-click="deleteChirp($index)">DELETE</button>
+        </div>
+        <button ng-click="getSingle()">Get Single Chirp</button>
+        <div>
+            <h1>{{ featuredChirp.message }} </h1>
+                <h3>{{ featuredChirp.name }}</h3>
+                <h3>{{ featuredChirp.timestamp | date: short }}</h3>
+                <p>{{ featuredChirp.id }}</p>  
+                <input type='text' ng-model="featuredChirp.message" placeholder="Message to Update">
+                <button ng-click="updateChirp()">Update</button>       
+        </div>
+        <input type="text" ng-model="newChirpMessage">
+        <button ng-click="saveChirp()">Save</button>
+    </body>
+</html>
